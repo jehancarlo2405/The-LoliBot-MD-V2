@@ -162,9 +162,10 @@ Después el termux poner:
 
 ----
 
-### 𝐶𝑜𝑙𝑎𝑏𝑜𝑟𝑎𝑑𝑜𝑟𝑎 
+### 𝐶𝑜𝑙𝑎𝑏𝑜𝑟𝑎𝑑𝑜𝑟𝑒𝑠
 [![GataNina-Li](https://github.com/GataNina-Li.png?size=100)](https://github.com/GataNina-Li) 
-
+[![Yesenia57](https://github.com/Yesenia57.png?size=100)](https://github.com/Yesenia57) 
+[![Azami19](https://github.com/Azami19.png?size=100)](https://github.com/Azami19) 
 ----
 
 ### 🌟 𝐀𝐠𝐫𝐚𝐜𝐢𝐦𝐢𝐞𝐧𝐭𝐨
