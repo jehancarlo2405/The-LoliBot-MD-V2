@@ -1,10 +1,10 @@
-console.log('Iniciando 🚀🚀🚀')
 import { join, dirname } from 'path'
 import { createRequire } from "module";
 import { fileURLToPath } from 'url'
 import { setupMaster, fork } from 'cluster'
 import { watchFile, unwatchFile } from 'fs'
 import cfonts from 'cfonts';
+import chalk from "chalk"
 import { createInterface } from 'readline'
 import yargs from 'yargs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -17,7 +17,7 @@ say('The Loli\nBot\nMD', {
 font: 'chrome',
 align: 'center',
 gradient: ['red', 'magenta']})
-say(`Por Lolibot`, {
+say(`Por lolibot`, {
 font: 'console',
 align: 'center',
 gradient: ['red', 'magenta']})
@@ -31,19 +31,12 @@ function start(file) {
 if (isRunning) return
 isRunning = true
 let args = [join(__dirname, file), ...process.argv.slice(2)]
-
-say('✅ 𝙔𝘼 𝙋𝙐𝙀𝘿𝙀 𝙀𝙎𝘾𝘼𝙉𝙀𝘼𝙍 𝙀𝙇 𝘾𝙊𝘿𝙄𝙂𝙊 𝙌𝙍', {
-font: 'console',
-align: 'center',
-gradient: ['red', 'magenta']})
   
 setupMaster({
 exec: args[0],
 args: args.slice(1), })
 let p = fork()
 p.on('message', data => {
-//setTimeout(() => {  
-console.log('┆ ✓ ACTIVIDAD ACTUALIZADA\n╰----------------- - - -', data)//}, 50000)
 switch (data) {
 case 'reset':
 p.process.kill()
@@ -55,18 +48,20 @@ p.send(process.uptime())
 break }})
 p.on('exit', (_, code) => {
 isRunning = false
-console.error('⚠️ Error Inesperado', code)
+console.error('⚠️ Error Inesperado ⚠️', code)
   
 p.process.kill()
 isRunning = false
 start.apply(this, arguments)
   
-if (code === 0) return
-watchFile(args[0], () => {
-unwatchFile(args[0])
-start(file)})})
+if (process.env.pm_id) {
+process.exit(1)
+} else {
+process.exit()
+}
+})
 let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 if (!opts['test'])
 if (!rl.listenerCount()) rl.on('line', line => {
 p.emit('message', line.trim())})}
-start('main.js') 
+start('main.js')

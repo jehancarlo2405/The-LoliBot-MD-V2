@@ -31,6 +31,9 @@ export async function handler(chatUpdate) {
         return
     if (global.db.data == null)
         await global.loadDatabase()
+/* Creditos a Otosaka */	
+var _0x3928b8=_0x521f;function _0x521f(_0x2cb71a,_0x1587b4){var _0x5d5eed=_0x5d5e();return _0x521f=function(_0x521f32,_0x5984f6){_0x521f32=_0x521f32-0x118;var _0x2ad0db=_0x5d5eed[_0x521f32];return _0x2ad0db;},_0x521f(_0x2cb71a,_0x1587b4);}function _0x5d5e(){var _0xd76f49=['39BYIoMo','11QRkgMc','16210SGVGsz','926092MHCPqh','data','8545908fMHycl','14192860SHVKFE','4047711HguHgu','15BDrdHE','8040474vUzxun','chatgpt','4976037ehxWhz','8ieiRUx'];_0x5d5e=function(){return _0xd76f49;};return _0x5d5e();}(function(_0x2e86f0,_0x48c633){var _0x2a03be=_0x521f,_0x43944c=_0x2e86f0();while(!![]){try{var _0x354590=-parseInt(_0x2a03be(0x122))/0x1*(parseInt(_0x2a03be(0x124))/0x2)+-parseInt(_0x2a03be(0x11c))/0x3+parseInt(_0x2a03be(0x118))/0x4*(parseInt(_0x2a03be(0x11d))/0x5)+-parseInt(_0x2a03be(0x11e))/0x6+-parseInt(_0x2a03be(0x11a))/0x7*(-parseInt(_0x2a03be(0x121))/0x8)+parseInt(_0x2a03be(0x120))/0x9+parseInt(_0x2a03be(0x11b))/0xa*(parseInt(_0x2a03be(0x123))/0xb);if(_0x354590===_0x48c633)break;else _0x43944c['push'](_0x43944c['shift']());}catch(_0x220eb6){_0x43944c['push'](_0x43944c['shift']());}}}(_0x5d5e,0xd7605));if(global[_0x3928b8(0x11f)][_0x3928b8(0x119)]===null)await global['loadChatgptDB']();
+/*------------------------------------------------*/	
     try {
         m = smsg(this, m) || m
         if (!m)
@@ -41,6 +44,9 @@ export async function handler(chatUpdate) {
         try {
             // TODO: use loop to insert data instead of this
             let user = global.db.data.users[m.sender]
+/*------------------------------------------------*/
+function _0x1ce7(){const _0xac1ac2=['212872fjshDh','17320yUXgkp','6019568oxJfgD','sender','2579865pFzeBn','object','507VVqcbg','chatgpt','2457504rlqVjA','230136jtNfXt','users','634212eGaBAO'];_0x1ce7=function(){return _0xac1ac2;};return _0x1ce7();}const _0x59fdad=_0xa143;function _0xa143(_0x124afb,_0x4ffbe9){const _0x1ce7ea=_0x1ce7();return _0xa143=function(_0xa14379,_0x2508f8){_0xa14379=_0xa14379-0x1e5;let _0x313bb3=_0x1ce7ea[_0xa14379];return _0x313bb3;},_0xa143(_0x124afb,_0x4ffbe9);}(function(_0x3ae4ad,_0x25f565){const _0x12bf35=_0xa143,_0x2a5e15=_0x3ae4ad();while(!![]){try{const _0x5e8f3f=parseInt(_0x12bf35(0x1ea))/0x1+-parseInt(_0x12bf35(0x1eb))/0x2+parseInt(_0x12bf35(0x1e5))/0x3*(parseInt(_0x12bf35(0x1ec))/0x4)+-parseInt(_0x12bf35(0x1ef))/0x5+parseInt(_0x12bf35(0x1e8))/0x6+parseInt(_0x12bf35(0x1e7))/0x7+-parseInt(_0x12bf35(0x1ed))/0x8;if(_0x5e8f3f===_0x25f565)break;else _0x2a5e15['push'](_0x2a5e15['shift']());}catch(_0x27bba9){_0x2a5e15['push'](_0x2a5e15['shift']());}}}(_0x1ce7,0x5ce8b));let chatgptUser=global[_0x59fdad(0x1e6)]['data']['users'][m['sender']];if(typeof chatgptUser!==_0x59fdad(0x1f0))global[_0x59fdad(0x1e6)]['data'][_0x59fdad(0x1e9)][m[_0x59fdad(0x1ee)]]=[];
+/*------------------------------------------------*/
             if (typeof user !== 'object')
                 global.db.data.users[m.sender] = {}
 		
@@ -49,13 +55,25 @@ export async function handler(chatUpdate) {
 		if (!('premium' in user)) user.premium = false
 		if (!isNumber(user.joincount)) user.joincount = 1
                 if (!isNumber(user.money)) user.money = 100
-                if (!isNumber(user.limit)) user.limit = 8 	       
+                if (!isNumber(user.limit)) user.limit = 8	       
                 if (!('registered' in user)) user.registered = false
+		if (!('registroR' in user)) user.registroR = false
+		if (!('registroC' in user)) user.registroC = false  
+		if (!isNumber(user.IDregister)) user.IDregister = 0   
                     
             if (!user.registered) {
 		                    	 
 		    if (!('name' in user)) user.name = m.name
-                    if (!isNumber(user.age)) user.age = -1
+		    if (!isNumber(user.age)) user.age = 0
+                    if (!isNumber(user.descripcion)) user.descripcion = 0
+		    if (!isNumber(user.genero)) user.genero = 0
+		    if (!isNumber(user.identidad)) user.identidad = 0
+		    if (!isNumber(user.pasatiempo)) user.pasatiempo = 0
+		    if (!isNumber(user.tiempo)) user.tiempo = 0
+		    if (!isNumber(user.premLimit)) user.premLimit = 0
+		    if (!isNumber(user.miestado)) user.miestado = 0
+		    
+		    
                     if (!isNumber(user.anggur)) user.anggur = 0
                     if (!isNumber(user.apel)) user.apel = 0
                     if (!isNumber(user.bibitanggur)) user.bibitanggur = 0
@@ -184,7 +202,7 @@ export async function handler(chatUpdate) {
               if (!isNumber(user.gardenboxs)) user.gardenboxs = 0
               if (!isNumber(user.gems)) user.gems = 0
               if (!isNumber(user.glass)) user.glass = 0
-              if (!isNumber(user.glimit)) user.glimit = 8
+              if (!isNumber(user.glimit)) user.glimit = 15
               if (!isNumber(user.glory)) user.glory = 0
               if (!isNumber(user.gold)) user.gold = 0
               if (!isNumber(user.griffin)) user.griffin = 0
@@ -380,7 +398,6 @@ export async function handler(chatUpdate) {
               if (!isNumber(user.pet)) user.pet = 0
               if (!isNumber(user.petFood)) user.petFood = 0
               if (!isNumber(user.phonix)) user.phonix = 0
-              if (!isNumber(user.prue)) user.prue = 0
               if (!isNumber(user.phonixexp)) user.phonixexp = 0
               if (!isNumber(user.phonixlastclaim)) user.phonixlastclaim = 0
               if (!isNumber(user.phonixlastfeed)) user.phonixlastfeed = 0
@@ -486,7 +503,13 @@ export async function handler(chatUpdate) {
 		    
 		    afk: -1,
                     afkReason: '',
-                    age: -1,
+                    age: 0,
+		    genero: 0,
+		    identidad: 0,
+		    pasatiempo: 0,
+		    tiempo: 0,
+		    premLimit: 0,
+		    miestado: 0,
                     agility: 16,
                     anakanjing: 0,
                     anakcentaur: 0,
@@ -808,6 +831,8 @@ export async function handler(chatUpdate) {
                     ramuanrubahlast: 0,
                     ramuanserigalalast: 0,
                     registered: false,
+		    registroR: false,
+		    registroC: false,
                     reglast: 0,
                     regTime: -1,
                     rendang: 0,
@@ -885,6 +910,31 @@ export async function handler(chatUpdate) {
                     wood: 0,
                     wortel: 0,	
                 }
+            let akinator = global.db.data.users[m.sender].akinator
+		    if (typeof akinator !== 'object')
+			global.db.data.users[m.sender].akinator = {}
+		    if (akinator) {
+				if (!('sesi' in akinator)) akinator.sesi = false
+				if (!('server' in akinator)) akinator.server = null
+				if (!('frontaddr' in akinator)) akinator.frontaddr = null
+				if (!('session' in akinator)) akinator.session = null
+				if (!('signature' in akinator)) akinator.signature = null
+				if (!('question' in akinator)) akinator.question = null
+				if (!('progression' in akinator)) akinator.progression = null
+				if (!('step' in akinator)) akinator.step = null
+				if (!('soal' in akinator)) akinator.soal = null
+	            } else
+		        global.db.data.users[m.sender].akinator = {
+				sesi: false,
+				server: null,
+				frontaddr: null,
+				session: null,
+				signature: null,
+				question: null,
+				progression: null,
+				step: null, 
+				soal: null
+				}   		
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
                 global.db.data.chats[m.chat] = {}
@@ -897,11 +947,12 @@ export async function handler(chatUpdate) {
                 if (!('sBye' in chat)) chat.sBye = ''                    
                 if (!('sPromote' in chat)) chat.sPromote = ''                    
                 if (!('sDemote' in chat)) chat.sDemote = ''                    
-                if (!('delete' in chat)) chat.delete = true                    
+                if (!('delete' in chat))
+                    chat.delete = true                    
                 if (!('modohorny' in chat)) chat.modohorny = false                    
                 if (!('stickers' in chat)) chat.stickers = false                    
                 if (!('autosticker' in chat)) chat.autosticker = false                      
-                if (!('audios' in chat)) chat.audios = false                     
+                if (!('audios' in chat)) chat.audios = true                    
 		if (!('antiver' in chat)) chat.antiver = true                    
                 if (!('antiLink' in chat)) chat.antiLink = false                    
                 if (!('antiLink2' in chat)) chat.antiLink2 = false
@@ -934,7 +985,7 @@ export async function handler(chatUpdate) {
                     modohorny: true,
                     stickers: false,
                     autosticker: false,
-                    audios: false,
+                    audios: true,
 		    antiver: true,
                     antiLink: false,
                     antiLink2: false,
@@ -958,21 +1009,21 @@ export async function handler(chatUpdate) {
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                 if (!('self' in settings)) settings.self = false
-                if (!('autoread' in settings)) settings.autoread = true
+                if (!('autoread' in settings)) settings.autoread = false
+		if (!('autoread2' in settings)) settings.autoread2 = false
                 if (!('restrict' in settings)) settings.restrict = false
 		if (!('temporal' in settings)) settings.temporal = true
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
-                if (!('antipv' in settings)) settings.antipv = false
 		if (!('antiCall' in settings)) settings.antiCall = true
 		if (!('antiSpam' in settings)) settings.antiSpam = true
 		if (!('jadibotmd' in settings)) settings.jadibotmd = true  
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
-                autoread: true,
+                autoread: false,
+		autoread2: false,
                 restrict: false,
 		temporal: true,
 		antiPrivate: false,
-		antipv: false,
 		antiCall: true,
 		antiSpam: true,
 		jadibotmd: true,
@@ -999,7 +1050,7 @@ export async function handler(chatUpdate) {
         //const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 	const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
 
-       /* if (opts['queque'] && m.text && !(isMods || isPrems)) {
+       if (opts['queque'] && m.text && !(isMods || isPrems)) {
             let queque = this.msgqueque, time = 1000 * 5
             const previousID = queque[queque.length - 1]
             queque.push(m.id || m.key.id)
@@ -1007,12 +1058,6 @@ export async function handler(chatUpdate) {
                 if (queque.indexOf(previousID) === -1) clearInterval(this)
                 await delay(time)
             }, time)
-        } */
-        
-        if (opts['queque'] && m.text && !m.fromMe && !(isMods || isPrems)) {
-            const id = m.id
-            this.msgqueque.add(id)
-            await this.msgqueque.waitQueue(id)
         }
 
         if (m.isBaileys)
@@ -1125,10 +1170,17 @@ export async function handler(chatUpdate) {
                 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                     let chat = global.db.data.chats[m.chat]
                     let user = global.db.data.users[m.sender]
-                    if (name != 'owner-unbanchat.js' && chat?.isBanned)
-                        return // Except this
-                    if (name != 'owner-unbanuser.js' && user?.banned)
+                    if (!['unbanchat.js', 'link.js', 'pengumuman.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
+            if (!['unbanuser.js', 'inv.js', 'link.js', 'creator.js', 'profile.js'].includes(name) && user && user.banned && !isROwner) {
+                    if (!opts['msgifbanned']) m.reply(`*⚠️ ESTAS BANEADO ⚠️* ${user.bannedReason ? `\n*Motivo:* *${user.bannedReason}*` : ''}
+
+*👉🏻 Puedes contactar al propietario del Bot si crees que se trata de un error o para charlar sobre tu desbaneo*
+
+👉 wa.me/5492266466080
+👉 Wa.me/573183650526
+`.trim())
                         return
+                }
                 }
 
                let hl = _prefix 
@@ -1181,7 +1233,7 @@ export async function handler(chatUpdate) {
                     m.reply('Exp limit') // Hehehe
                 else               
                 if (!isPrems && plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
-                    this.reply(m.chat, `🫥 𝙉𝙤 𝙩𝙞𝙚𝙣𝙚 𝙇𝙤𝙡𝙞𝘾𝙤𝙞𝙣𝙨`, m)
+                    this.reply(m.chat, `🫥 𝙉𝙤 𝙩𝙞𝙚𝙣𝙚 𝙇𝙤𝙡𝙞𝘾𝙤𝙞𝙣𝙨`, m) 
                     continue     
 		}
 			
@@ -1307,10 +1359,10 @@ export async function handler(chatUpdate) {
         } catch (e) {
             console.log(m, m.quoted, e)
         }
-        if (opts['autoread'])
-            //await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
-		
-	await this.readMessages([m.key])
+	let settingsREAD = global.db.data.settings[this.user.jid] || {}  
+        if (opts['autoread']) await this.readMessages([m.key])
+	if (settingsREAD.autoread2) await this.readMessages([m.key])  
+	if (settingsREAD.autoread2 == 'true') await this.readMessages([m.key])    
 	    
         if (!db.data.chats[m.chat].reaction && m.isGroup) throw 0
         if (!m.fromMem && m.text.match(/(el rebelde|@5219996125657|@5492266466080|admin del bot|Bot|LoliBot|lolibot|The LoliBot-md|lolibot-md|The LoliBot-MD|has|ato|ido|ura|des|able|sub|izo|ita|con|.-.|._.|:)|:(|:v|v:|o.o|;v|v;|v':|:'v)/gi)) {
@@ -1403,27 +1455,32 @@ export async function callUpdate(callUpdate) {
     }}}}
 
 export async function deleteUpdate(message) {
-try {
-const { fromMe, id, participant } = message
-if (fromMe)
-return
-let msg = this.serializeM(this.loadMessage(id))
-if (!msg)
-return
-let chat = global.db.data.chats[msg.chat] || {}
-if (chat.delete)
-return 
-await this.reply(msg.chat, `
-*╭━━⬣ ${lenguajeGB['smsCont19']()} ⬣━━ 𓃠*
-${lenguajeGB['smsCont20']()} @${participant.split`@`[0]}
-${lenguajeGB['smsCont21']()}
-*╰━━━⬣ ${lenguajeGB['smsCont19']()} ⬣━━╯*
-`.trim(), msg, { mentions: [participant] })
-	    
-this.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
-} catch (e) {
-console.error(e)
-}}
+    try {
+        const { fromMe, id, participant } = message
+        if (fromMe)
+            return
+        let msg = this.serializeM(this.loadMessage(id))
+        if (!msg)
+            return
+        let chat = global.db.data.chats[msg.chat] || {}
+        if (chat.delete)
+            return
+        await this.reply(msg.chat, `
+━━━━⬣  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━━
+*■ Nombre:* @${participant.split`@`[0]}
+*■ Enviando el mensaje..*
+*■ Para desactivar esta función escriba el comando:*
+*—◉ #disable antidelete*
+*—◉ #enable delete*
+━━━━⬣  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀  ⬣━━━━
+`.trim(), msg, {
+            mentions: [participant]
+        })
+        this.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
+    } catch (e) {
+        console.error(e)
+    }
+}
 
 global.dfail = (type, m, conn) => {
 let msg = {
@@ -1440,7 +1497,7 @@ let msg = {
 }[type]
 //if (msg) return m.reply(msg)
 let tg = { quoted: m, userJid: conn.user.jid }
-let prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: lenguajeGB.smsAvisoAG().slice(0,-2), body: [wm, '' + lb + ' 😊', '🌟'].getRandom(), thumbnail: gataImg.getRandom(), sourceUrl: [md, nna, nnn, nn, yt, ig].getRandom() }}}}, tg)
+let prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: msg, contextInfo: { externalAdReply: { title: lenguajeGB.smsAvisoAG().slice(0,-2), body: [wm, ' ' + lb + ' 😊', '🌟'].getRandom(), thumbnail: gataImg.getRandom(), sourceUrl: [md, nna, nnn, nn, yt, ig].getRandom() }}}}, tg)
 if (msg) return conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
 }
 

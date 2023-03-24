@@ -1,26 +1,27 @@
-import { watchFile, unwatchFile } from 'fs' 
+import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
+import cheerio from 'cheerio'
+import fetch from 'node-fetch'
+import axios from 'axios'
 import moment from 'moment-timezone' 
-import fs from 'fs' 
 import { en, es, id, ar, pt } from './lib/idiomas/total-idiomas.js' 
 
-//⊱ ━━━━━.⋅ Añada los numeros a ser Propietario ⋅.━━━━ ⊰  
+///⊱ ━━━━━.⋅ Añada los numeros a ser Propietario ⋅.━━━━ ⊰  
 global.owner = [
-  ['5492266466080', '𝙏𝙝𝙚 𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿', true],
-  ['5492266613038', '𝙏𝙝𝙚 𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿', true],
-  ['56964787183', '𝙏𝙝𝙚 𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿', true], 
-//['593968585383'], DEJEN ESTO ASÍ POR AHORA POR FAVOR
-  ['85260779999'], //bot
-  ['18134037792'], 
-  ['56977774738'],
-  ['18134037797'],
-  ['5214531173598']
+  ['5492266466080', '𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿', true],
+  ['573183650526', '𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿', true],
+  ['593968585383'],
+  ['5492266613038'],
+  ['5214531173598'],
+  ['59894808483'],
+  ['5214531106422']
 ]
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
 global.mods = ['50495745934'] 
-global.prems = ['595986172767', '5493704555464'],  
+global.prems = ['595986172767', '972529277314'],  
    
   
 //⊱ ━━━━━.⋅ IDIOMA : LENGUAJE ⋅.━━━━ ⊰ 
@@ -33,109 +34,87 @@ global.lenguajeGB = es  //Idioma de The-LoliBot-MD, Ejemplo: es | en | pt...
 
 //━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
+global.openai_key = 'sk-...OzYy'
+/* Consigue tu ApiKey en este enlace: https://platform.openai.com/account/api-keys */
 
-global.APIs = { // API Prefix. 
-  
-//⊱ ━━━━━.⋅ name: 'https://website' ⋅.━━━━ ⊰
-  aria: 'https://ariarestapii.herokuapp.com',
-  amel: 'https://melcanz.com',
-  bx: 'https://bx-hunter.herokuapp.com',
-  nrtm: 'https://nurutomo.herokuapp.com',
+global.openai_org_id = 'HITjoN7H8pCwoncEB9e3fSyW'
+/* Consigue tu ID de organizacion en este enlace: https://platform.openai.com/account/org-settings */
+
+global.keysZens = ['LuOlangNgentot', 'c2459db922', '37CC845916', '6fb0eff124', 'hdiiofficial', 'fiktod', 'BF39D349845E', '675e34de8a', '0b917b905e6f']
+global.keysxxx = keysZens[Math.floor(keysZens.length * Math.random())]
+global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c71a2fb', '5bd33b276d41d6b4', 'HIRO', 'kurrxd09', 'ebb6251cc00f9c63']
+global.keysxteam = keysxteammm[Math.floor(keysxteammm.length * Math.random())]
+global.keysneoxrrr = ['5VC9rvNx', 'cfALv5']
+global.keysneoxr = keysneoxrrr[Math.floor(keysneoxrrr.length * Math.random())]
+global.lolkeysapi = ['BrunoSobrino']
+
+global.APIs = { 
   xteam: 'https://api.xteam.xyz',
-  nzcha: 'http://nzcha-apii.herokuapp.com',
-  bg: 'http://bochil.ddns.net',
-  fdci: 'https://api.fdci.se',
   dzx: 'https://api.dhamzxploit.my.id',
-  bsbt: 'https://bsbt-api-rest.herokuapp.com',
-  zahir: 'https://zahirr-web.herokuapp.com',
-  zeks: 'https://api.zeks.me',
-  hardianto: 'https://hardianto-chan.herokuapp.com',
-  pencarikode: 'https://pencarikode.xyz', 
-  LeysCoder: 'https://leyscoders-api.herokuapp.com',
-  adiisus: 'https://adiixyzapi.herokuapp.com',
   lol: 'https://api.lolhuman.xyz',
-  pencarikode: 'https://pencarikode.xyz',
-  Velgrynd: 'https://velgrynd.herokuapp.com',
-  rey: 'https://server-api-rey.herokuapp.com',
-  hardianto: 'http://hardianto-chan.herokuapp.com',
-  shadow: 'https://api.reysekha.xyz',
-  apialc: 'https://api-alc.herokuapp.com',
-  botstyle: 'https://botstyle-api.herokuapp.com',
-  neoxr: 'https://neoxr-api.herokuapp.com',
-  ana: 'https://anabotofc.herokuapp.com/',
-  kanx: 'https://kannxapi.herokuapp.com/',
-  nekobot: 'https://nekobot.xyz/api/',
-  purrbot: 'https://purrbot.site/api/',
-  dhnjing: 'https://dhnjing.xyz',
-  'https://violetics.pw': 'beta'
+  violetics: 'https://violetics.pw',
+  neoxr: 'https://api.neoxr.my.id',
+  zenzapis: 'https://api.zahwazein.xyz',
+  akuari: 'https://api.akuari.my.id',
+  akuari2: 'https://apimu.my.id',	
+  fgmods: 'https://api-fgmods.ddns.net',
+  botcahx: 'https://api.botcahx.biz.id'
 },
-  
-global.Key360 = '964f-0c75-7afc'
-  
-global.APIKeys = { // APIKey Here
-  //⊱ ━━━━━.⋅ 'https://website': 'apikey' ⋅.━━━━ ⊰
-  'https://ariarestapii.herokuapp.com': 'aria',
-  'https://api-alc.herokuapp.com': 'ConfuMods',
-  'https://api.reysekha.xyz': 'apirey',
-  'https://melcanz.com': 'F3bOrWzY',
-  'https://bx-hunter.herokuapp.com': 'Ikyy69',
-  'https://api.xteam.xyz': '5bd33b276d41d6b4',
-  'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://bsbt-api-rest.herokuapp.com': 'benniismael',
-  'https://api.zeks.me': 'apivinz',
-  'https://hardianto-chan.herokuapp.com': 'hardianto',
-  'https://pencarikode.xyz': 'pais', 
-  'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
-  'https://server-api-rey.herokuapp.com': 'apirey',
-  'https://api.lolhuman.xyz': '9b817532fadff8fc7cb86862',
-  'https://botstyle-api.herokuapp.com': 'Eyar749L',
-  'https://neoxr-api.herokuapp.com': 'yntkts',
-  'https://anabotofc.herokuapp.com/': 'AnaBot'
+global.APIKeys = { 
+  'https://api.xteam.xyz': `${keysxteam}`,
+  'https://api.lolhuman.xyz': '85faf717d0545d14074659ad',
+  'https://api.neoxr.my.id': `${keysneoxr}`,	
+  'https://violetics.pw': 'beta',
+  'https://api.zahwazein.xyz': `${keysxxx}`,
+  'https://api-fgmods.ddns.net': 'fg-dylux',
+  'https://api.botcahx.biz.id': 'Admin'
 }
 
 global.imagen1 = fs.readFileSync('./Menu2.jpg')
 global.imagen2 = fs.readFileSync('./src/nuevobot.jpg') 
 global.imagen3 = fs.readFileSync('./src/Pre Bot Publi.png')
 
+global.mods = [] 
+
+
+/*************************/
+global.cheerio = cheerio
+global.fs = fs
+global.fetch = fetch
+global.axios = axios
+global.moment = moment	
+
 //⊱ ━━━━━.⋅ Sticker WM ⋅.━━━━ ⊰
 
-global.packname = 'Toma tu sticker'
-global.author = 'The LoliBot-MD'
+global.packname = '𝙏𝙤𝙢𝙖 𝙩𝙪 𝙨𝙩𝙞𝙘𝙠𝙚𝙧'
+global.author = '𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿'
 
 //⊱ ━━━━━.⋅ Versión | Nombre | cuentas ⋅.━━━━ ⊰
 
-global.vs = 'V2 (1.4.5)'
-global.vsJB = '2.0'
-
+global.vs = '1.4.5'
 global.lb = '𝙏𝙝𝙚 𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿'
-global.lolibot = lb
-
 global.yt = 'https://www.youtube.com/@TheLoliBot-MD'
-global.youtube = yt
-
 global.ig = 'https://www.tiktok.com/@thelolibot_md'
-global.tiktok = ig
-
 global.md = 'https://github.com/elrebelde21/The-LoliBot-MD'
-global.lolibot = md
+global.fb = 'https://www.facebook.com/groups/872989990425789/'
 
 global.nna = 'https://chat.whatsapp.com/JESaesjOEcB6wnGX0QYT9o'
 global.nnagrupo = nna //Actualización, información sobre el bot
 global.nna2 = 'JESaesjOEcB6wnGX0QYT9o'
 
-global.nn = 'https://chat.whatsapp.com/BaHPUdegBxB4eurlAbhOT8'
+global.nn = 'https://chat.whatsapp.com/LZFE2MHvEkY7b69TmAGmHR'
 global.nngrupo = nn //Grupo 1
 
-global.nnn = 'https://chat.whatsapp.com/IIteN3dd6rG87b2liETl2o'
+global.nnn = 'https://chat.whatsapp.com/GUlSx2eoanhBPssKzuA48c'
 global.nnngrupo = nnn //Grupo 2
 
 global.nnnt = 'https://chat.whatsapp.com/CcJKHrxGBWAAH3PiBL07JS' //Grupo del Colaboracion
 
-global.nnntt = 'https://chat.whatsapp.com/ImKvcl3Pstb8IMZk02v692' //Grupo COL 2 
+global.nnntt = 'https://chat.whatsapp.com/FT0pwTOl0KN5Hyea34Wca9' //Grupo COL 2 
 
-global.nnnttt = 'https://chat.whatsapp.com/DsFPvTLFDQaBroutCnD2DO' //enlace lolibot
+global.nnnttt = 'https://chat.whatsapp.com/DjZMclVofPaHhw9E2ptunM' //enlace lolibot
 
-global.nnntttt = 'https://chat.whatsapp.com/KzHWDoG6he3GrXIfssvc7t'
+global.nnntttt = 'https://chat.whatsapp.com/FRkr7jJHSJA5OjVtE64dDs'
 global.nnnttttgrupo = nnntttt //Grupo ayuda sobre el bot
 
 global.asistencia = 'Wa.me/5492266466080' //Dudas? escríbeme...
@@ -166,11 +145,11 @@ global.envio = eeg
 global.eg = '╰⊱💚⊱ *𝙀𝙭𝙞𝙩𝙤* ⊱💚⊱╮\n\n'
 global.exito = eg
 
-//𝙀𝙅𝙀𝙈𝙋𝙇𝙊 | 𝙀𝙓𝘼𝙈𝙋𝙇𝙀
+//𝙀𝙅𝙀𝙈𝙋𝙇𝙊
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
 
-//⊱ ━━━━━.⋅ Información | Information ⋅.━━━━ ⊰
+//⊱ ━━━━━.⋅ Información ⋅.━━━━ ⊰
 
 global.wm = '𝑻𝒉𝒆 𝑳𝒐𝒍𝒊𝑩𝒐𝒕-𝑴𝑫'
 global.igfg = '𝑻𝒉𝒆 𝑳𝒐𝒍𝒊𝑩𝒐𝒕-𝑴𝑫'
@@ -184,28 +163,12 @@ global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.pre
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
 
-//━━━━━━━━━━━━━━lolkeys━━━━━━━━━
-
-global.keysZens = ['c2459db922', '37CC845916', '6fb0eff124']
-// 'fiktod' 'BF39D349845E' '675e34de8a' '0b917b905e6f'
-global.keysxxx = keysZens[Math.floor(keysZens.length * Math.random())]
-global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c71a2fb', '5bd33b276d41d6b4', 'HIRO', 'kurrxd09', 'ebb6251cc00f9c63']
-global.keysxteam = keysxteammm[Math.floor(keysxteammm.length * Math.random())]
-global.keysneoxrrr = ['5VC9rvNx', 'cfALv5']
-global.keysneoxr = keysneoxrrr[Math.floor(keysneoxrrr.length * Math.random())]
-global.lolkeysapi = ['BrunoSobrino']
-
-//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
-
-
 //⊱ ━━━━━.⋅ IMG ⋅.━━━━ ⊰
 
 global.imagen1 = fs.readFileSync('./media/menus/Menu3.jpg')
 global.imagen2 = fs.readFileSync('./media/menus/img1.jpg')
 global.imagen3 = fs.readFileSync('./media/menus/img2.jpg')
-
-//━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
-
+global.imagen4 = fs.readFileSync('./media/menus/img3.jpg')
 
 //━━━━━━━━━━━━━━ img ━━━━━━━━━
 
@@ -232,7 +195,7 @@ global.img16 = 'https://i.imgur.com/11MRjo4.jpeg' //+18
 
 global.img17 = 'https://i.imgur.com/JpYfcH0.jpeg'
 
-global.redesMenu = [nna, nna2, nn, nnn, nnnt, nnntt, nnnttt, nnntttt, md, ig, lb, yt]
+global.redesMenu = [nna, nna2, nn, nnn, nnnt, nnntt, nnnttt, nnntttt, md, ig, lb, fb, yt]
 global.gataMenu = [img, img2, img6, img7, img8, img9, img13, img14, img15, img16]
 global.gataVidMenu = ['./media/menus/Menuvid1.mp4', './media/menus/Menuvid2.mp4', './media/menus/Menuvid3.mp4']
 global.gataImg = [imagen1, imagen2, imagen3]
@@ -288,7 +251,7 @@ global.fgif = {
 
 global.multiplier = 60 // Cuanto más alto, más difícil subir de nivel
 
-//Emojis RPG - Referencias
+//Emojis RPG
 global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()
