@@ -69,7 +69,6 @@ pkg update -y && pkg upgrade -y && pkg install -y bash && pkg install -y wget &&
 ```bash
 wget -O - https://raw.githubusercontent.com/elrebelde21/The-LoliBot-MD/master/install.sh | bash
 ```
-------------------
 -----
 ### 🪄 (OPCIÓN 2) INSTALACIÓN MANUAL POR TERMUX - GITHUB 
 #### ⬇️ AGREGAR CADA COMANDO POR TEXMUX: 
